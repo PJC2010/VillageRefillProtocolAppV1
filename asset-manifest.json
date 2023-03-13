@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/PJC2010/dgreact/static/css/main.4d969ea3.css",
-    "main.js": "/PJC2010/dgreact/static/js/main.42a42ce5.js",
-    "index.html": "/PJC2010/dgreact/index.html",
-    "main.4d969ea3.css.map": "/PJC2010/dgreact/static/css/main.4d969ea3.css.map",
-    "main.42a42ce5.js.map": "/PJC2010/dgreact/static/js/main.42a42ce5.js.map"
+    "main.css": "/dgreact/static/css/main.4d969ea3.css",
+    "main.js": "/dgreact/static/js/main.42a42ce5.js",
+    "index.html": "/dgreact/index.html",
+    "main.4d969ea3.css.map": "/dgreact/static/css/main.4d969ea3.css.map",
+    "main.42a42ce5.js.map": "/dgreact/static/js/main.42a42ce5.js.map"
   },
   "entrypoints": [
     "static/css/main.4d969ea3.css",
