@@ -1,3 +1,5 @@
+import { color } from "@mui/system";
+
 const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
   
 
@@ -32,7 +34,7 @@ const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
   return (
     <div>
       <h2>3. Approval Timeframe</h2>
-      <p style={{backgroundColor: 'green'}}>{message}</p>
+      <h1 style={{backgroundColor: 'green', color:'#ffffff'}}>{message}</h1>
     </div>
   );
 }; export default ApprovalTimeFrame

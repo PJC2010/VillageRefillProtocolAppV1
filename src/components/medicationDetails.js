@@ -51,7 +51,7 @@ const MedicationDetails = ({medication}) => {
             {medication && medication.drugGroupName && <p>Drug Group: {medication.drugGroupName}</p>}
             {medication && medication.adherenceDrug && <p>Adherence Drug? {medication.adherenceDrug}</p>}
             {medication && medication.labRequired && <p>Labs Required: {medication.labsRequired}</p>}
-            {medication && medication.labsRequiringEscalation &&<p>Labs needing escalation: {medication.labsRequiringEscalation}</p>}
+            {medication && medication.labsRequiringEscalation &&<p>Labs needing escalation: <div style={{backgroundColor: '#ff0d0d' , color: '#fbff0d'}}>{medication.labsRequiringEscalation}</div></p>}
             {medication && medication.quantityLimitMessage &&<p>Quantity Limit message: {medication.quantityLimitMessage}</p>}
             
             <Divider />
