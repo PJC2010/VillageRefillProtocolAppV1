@@ -7,6 +7,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import  CssBaseline  from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import Alert from '@mui/material/Alert';
+import '../App.css'
 
 
 
@@ -26,12 +28,13 @@ function RequestInfo({ setShowMedSearch }) {
     return (
         <React.Fragment>
         <CssBaseline />
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" >
 
       <form style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '25vh' }} onSubmit={handleSubmit}>
         <label>
           Enter the last fill date of medication requested:
           <DatePicker
+            className=''
             selected={selectedDate}
             onChange={date => setSelectedDate(date)}
           />

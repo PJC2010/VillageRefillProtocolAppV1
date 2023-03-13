@@ -125,8 +125,12 @@ function MedSearch({setShowOvCalc}) {
         
           
         <Container>
+          <Box>
+            
         <Autocomplete 
         style={{ backgroundColor: 'white'}}
+        fullWidth={true}
+        sx={{m: 1}}
         id="med-search"
         color='secondary'
         options={drugs}
@@ -146,9 +150,12 @@ function MedSearch({setShowOvCalc}) {
         }}
         
         />
+        
         {selectedMed && (
           <button onClick={() => setShowDetails(true) }>Next</button>
         )}
+        
+        </Box>
         </Container>
         {showDetails && (
           <MedicationDetails medication={selectedMed} />

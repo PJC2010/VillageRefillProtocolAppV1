@@ -20,12 +20,17 @@ function App() {
 
   return (
     <div className="App">
+      <head>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+      </head>
       <Container maxWidth="lg">
         <div className='header'>
           <h1>VillageMD Refill App</h1>
           <img className='logo' src={logo}></img>
         </div>
-        <Box sx={{ bgcolor: '#E6EED6', height: '100vh' }} >
+        
+        <Box sx={{ bgcolor: '#E6EED6', height: '100vh', borderColor:'#d1a43b', borderRadius: 1, boxShadow: 1 }} >
+        
        
       {!showMedSearch ? (
         <RequestInfo setShowMedSearch={setShowMedSearch} />
@@ -38,7 +43,12 @@ function App() {
           
         
       )}
+      
+      
+      
       </Box>
+      <div className='footer'><span>2023 Pete Castillo</span></div>
+      
       </Container>
     </div>
   );

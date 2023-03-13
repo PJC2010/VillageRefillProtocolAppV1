@@ -3,7 +3,11 @@ import OvCalc from "./ovCalc";
 import LabCalc from "./labCalc";
 import ApprovalTimeFrame from "./approvalTimeframe";
 import differenceInDays from 'date-fns/differenceInDays';
-import Container from '@mui/material/Container'
+import Container from '@mui/material/Container';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
 
 
 
@@ -43,17 +47,23 @@ const MedicationDetails = ({medication}) => {
     return (
         <Container>
         <div>
-            <h2>{medication.drugFullName}</h2>
-            <p>Drug Subclass: {medication.drugClassName}</p>
-            <p>Drug Group: {medication.drugGroupName}</p>
-            <p>Adherence Drug? {medication.adherenceDrug}</p>
-            <p>Labs Required: {medication.labsRequired}</p>
-            <p>Labs needing escalation: {medication.labsRequiringEscalation}</p>
-            <p>Quantity Limit message: {medication.quantityLimitMessage}</p>
+          
+            {medication && medication.drugFullName && <h2>{medication.drugFullName}</h2>}
+            {medication && medication.drugClassName &&<p>Drug Subclass: {medication.drugClassName}</p>}
+            {medication && medication.drugGroupName && <p>Drug Group: {medication.drugGroupName}</p>}
+            {medication && medication.adherenceDrug && <p>Adherence Drug? {medication.adherenceDrug}</p>}
+            {medication && medication.labRequired && <p>Labs Required: {medication.labsRequired}</p>}
+            {medication && medication.labsRequiringEscalation &&<p>Labs needing escalation: {medication.labsRequiringEscalation}</p>}
+            {medication && medication.quantityLimitMessage &&<p>Quantity Limit message: {medication.quantityLimitMessage}</p>}
             
-            <OvCalc    ovIntervalDays={medication.ovIntervalDays} calculateNumofDaysTillNextOv={calculateNumofDaysTillNextOv} />
+            <Divider />
+            
+            {medication.ovIntervalDays  && <OvCalc    ovIntervalDays={medication.ovIntervalDays} calculateNumofDaysTillNextOv={calculateNumofDaysTillNextOv} />} 
+            <Divider />
             {medication.labIntervalDays !== "N/A"  && (<LabCalc labIntervalDays={medication.labIntervalDays} calculateNumofDaysTillNextLab={calculateNumofDaysTillNextLab} />)}
-            <ApprovalTimeFrame daysTillNextOVDate={daysTillNextOVDate} daysTillNextLabDate={daysTillNextLabDate} /> 
+            <Divider />
+           <ApprovalTimeFrame daysTillNextOVDate={daysTillNextOVDate} daysTillNextLabDate={daysTillNextLabDate} /> 
+            
             
             
            

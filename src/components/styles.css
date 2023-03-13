@@ -5,3 +5,24 @@ ul {
 h1 {
     text-align: center;
 }
+
+.footer {
+    
+    
+    
+    
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #f2f2f2;
+    padding-left: 20px;
+    font-size: 14px;
+  }
+  .custom-datepicker {
+    border: 3px solid #ccc;
+  }
+
+  * button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
