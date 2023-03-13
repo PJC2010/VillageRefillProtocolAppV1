@@ -13,9 +13,12 @@ const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
 
   let message;
 
-  if (numOfDays <= 0) {
-    message = "Please send to provider for review.";
-  } else if (numOfDays <= 90) {
+  if (numOfDays === null) {
+    message = "";
+  } else if(numOfDays <= 0) {
+    message ="Please send to provider for review."
+  }
+  else if (numOfDays <= 90) {
     message = "Approve for 90 day supply.";
   } else if (numOfDays <= 180) {
     message = "Approve a 90 day supply + 1 refill.";
@@ -28,7 +31,7 @@ const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
 
   return (
     <div>
-      <h3>Approval Timeframe</h3>
+      <h2>3. Approval Timeframe</h2>
       <p style={{backgroundColor: 'green'}}>{message}</p>
     </div>
   );

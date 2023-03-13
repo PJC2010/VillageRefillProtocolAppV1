@@ -37,7 +37,7 @@ const OvCalc = ({ ovIntervalDays, calculateNumofDaysTillNextOv }) => {
 
   return (
     <div>
-      <h2>Next Appointment Date Calculator</h2>
+      <h2>1. Next Appointment Date Calculator</h2>
       <div>
         
         <DatePicker
