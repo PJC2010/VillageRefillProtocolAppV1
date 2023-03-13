@@ -1,27 +1,18 @@
 import { addDays } from 'date-fns';
 import React, {useState, useEffect } from 'react';
 import drugs from '../data/meddata.json'
-import LabCalc from './labCalc';
-import MedLogic from './medLogic';
-import OvCalc from './ovCalc';
-import RequestInfo from './requestInfo';
+
 import differenceInDays from 'date-fns/differenceInDays';
 import ApprovalTimeFrame from './approvalTimeframe';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container'
 import { CssBaseline, OutlinedInput } from '@mui/material';
-import FormHelperText from '@mui/material/FormHelperText';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
+
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import './styles.css';
-import MedicationOutlinedIcon from '@mui/icons-material/MedicationOutlined';
-import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
-import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
-import axios from 'axios';
-import Button from '@mui/material/Button';
+
+
 import MedicationDetails from './medicationDetails';
 
 
@@ -40,10 +31,9 @@ function MedSearch({setShowOvCalc}) {
     //const [selectedMedName, setSelectedMedName] = useState(""); 
     const [options, setOptions] = useState([]);
     
-    const [lastLabDate, setLastLabDate] = useState(new Date());
+    
     const [showMedSearch, setShowMedSearch] = useState(false);
-    const [inputValue, setInputValue] = useState('');
-    const [selectedDrug, setSelectedDrug] = useState('');
+    
     const [selectedMed, setSelectedMed] = useState(null);
     const [medList, setMedList] = useState([]);
     const [med, setMed] = useState(null);

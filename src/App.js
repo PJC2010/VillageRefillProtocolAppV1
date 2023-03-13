@@ -14,8 +14,8 @@ import MedicationDetails from './components/medicationDetails';
 
 function App() {
   const [showMedSearch, setShowMedSearch] = useState(false);
-  const [showOvCalc, setOVCalc] = useState([]);
-  const [showAppTimeFrame, setShowAppTimeFrame] = useState(false);
+  
+  
   const [selectedMedication, setSelectedMedication] = useState(null);
 
   return (
