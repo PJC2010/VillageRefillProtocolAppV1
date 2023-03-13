@@ -1,0 +1,284 @@
+type="text"  
+             defaultValue="Search for medication" 
+             value={search} 
+             list="options" />
+
+<datalist id="options">
+                {options.map((med) => (
+                    <option key={med} value={med} />
+                ))}
+
+            </datalist>
+
+            <input
+      
+        type="text"
+        value={search}
+        onChange={handleSearchChange} 
+        list="options" />
+        <datalist id="options">
+        {options.map((med) => (
+          <option key={med} value={med} />
+        ))}
+         </datalist> 
+
+         <ul >
+                
+                {searchResults.map((med) => (
+                    <li key={med.idx}>
+                        <strong>{med.drugFullName}</strong> 
+                        <br /> Brand Name: {med.brandName}
+                        <br /> Adherence drug? : {med.adherenceDrug}
+                        <br /> Drus Class: {med.drugClassName}
+                        <br /> Select last office visit date:  <OvCalc ovIntervalDays={med.ovIntervalDays}  />
+                        {/* <br />Select last lab date: <LabCalc labIntervalDays={med.labIntervalDays} lastLabDate={lastLabDate} setLastLabDate={setLastLabDate} /> */}
+
+                        <br /> Labs Required: {med.labsRequired}
+                        <br /> Labs Requiring Escalation: {med.vitalsRequiringEscalation}
+                        
+                        
+                    </li>
+                ))}
+                
+            </ul>
+
+       lab calc
+       const [selectedDate, setSelectedDate] = useState(lastLabDate);
+    
+
+  const nextLabDate = new Date(selectedDate.getTime() + labIntervalDays * 24 * 60 * 60 * 1000);
+
+  const handleChange = date => {
+    setSelectedDate(date);
+  };
+
+  useEffect(() => {
+    setLastLabDate(selectedDate);
+  }, [selectedDate, setLastLabDate]);
+
+  return (
+    <div>
+      <DatePicker selected={selectedDate} onChange={handleChange} />
+      <p>Next Lab Date: {nextLabDate.toLocaleDateString()}</p>
+      
+    </div>
+  );    
+
+  Approval timeframe
+  import React, {useState} from 'react';
+import differenceinDays from 'date-fns/differenceInDays'
+
+function ApprovalTimeFrame({daysTillNextAppt}){
+  
+
+  let message = "";
+
+  if (daysTillNextAppt > 0 && daysTillNextAppt < 90) {
+    message = "Approve 90 day supply";
+  } else if (daysTillNextAppt >= 90 && daysTillNextAppt < 180) {
+    message = "Approve 90 day supply + 1 refill";
+  } else if (daysTillNextAppt >= 180 && daysTillNextAppt < 270) {
+    message = "Approve 90 day supply + 2 refills";
+  } else if (daysTillNextAppt >= 270 && daysTillNextAppt < 365) {
+    message = "Approve 90 day supply + 3 refills";
+  } else if (daysTillNextAppt <= 0) {
+    message = "Follow denial process and provide courtesy supply"
+  } else if (daysTillNextAppt === null){
+    message = ''
+  }
+  
+  console.log(daysTillNextAppt)
+
+  return (
+    <>
+      <div>Message: {message}</div>
+    </>
+  );
+
+} export default ApprovalTimeFrame 
+
+function OvCalc({ovIntervalDays, daysUntilNextOVDate }){
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [daysTillNextAppt, setdaysTillNextAppt] = useState('');
+    
+
+    
+
+   
+    
+
+    const today = new Date();
+
+    const nextOvDate = new Date(selectedDate.getTime() + ovIntervalDays * 24 * 60 * 60 * 1000);
+
+    const handleChange = date => {
+        setSelectedDate(date);
+        const daysUntilNextOVDate = differenceInDays(nextOvDate , today)
+        
+        
+        setdaysTillNextAppt(daysUntilNextOVDate)
+    };
+    console.log(nextOvDate)
+    console.log(daysTillNextAppt)
+
+    return (
+        <div>
+            
+            <DatePicker selected={selectedDate} onChange={handleChange} onSelect={handleChange}/>
+            <p>Next Office Visit Date: {nextOvDate.toLocaleDateString()}</p>
+            {/* <ApprovalTimeFrame daysTillNextAppt={daysTillNextAppt}/> */}
+           
+           
+        </div>
+    )
+
+    
+} export default OvCalc;
+
+import React, { useState, useEffect } from "react";
+import DatePicker from 'react-datepicker' ;
+import 'react-datepicker/dist/react-datepicker.css';
+import differenceInDays from 'date-fns/differenceInDays';
+
+function LabCalc({labIntervalDays, lastLabDate, setLastLabDate}) {
+    
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [daysTillNextAppt, setdaysTillNextAppt] = useState('');
+  
+
+  
+
+ 
+  
+
+  const today = new Date();
+
+  const nextLabDate = new Date(selectedDate.getTime() + labIntervalDays * 24 * 60 * 60 * 1000);
+
+  const handleChange = date => {
+      setSelectedDate(date);
+      const daysUntilNextOVDate = differenceInDays(nextLabDate , today)
+      
+      
+      setdaysTillNextAppt(daysUntilNextOVDate)
+  };
+  console.log(nextLabDate)
+  console.log(daysTillNextAppt)
+
+  return (
+      <div>
+          
+          <DatePicker selected={selectedDate} onChange={handleChange} onSelect={handleChange}/>
+          <p>Next Lab Date: {nextLabDate.toLocaleDateString()}</p>
+          {/* <ApprovalTimeFrame daysTillNextAppt={daysTillNextAppt}/> */}
+         
+         
+      </div>
+  )
+} export default LabCalc;
+
+import React, { useState } from 'react';
+import OvCalc from './ovCalc';
+import LabCalc from './labCalc';
+
+const ApprovalTimeFrame = () => {
+  const [lastAppointmentDate, setLastAppointmentDate] = useState(null);
+  const [lastLabDate, setLastLabDate] = useState(null);
+  const [approvalMessage, setApprovalMessage] = useState(null);
+
+  const calculateApprovalTimeFrame = () => {
+    if (lastAppointmentDate && lastLabDate) {
+      const today = new Date();
+      const earliestDate = lastAppointmentDate < lastLabDate ? lastAppointmentDate : lastLabDate;
+      const timeFrameInDays = Math.floor((today - earliestDate) / (1000 * 60 * 60 * 24));
+      if (timeFrameInDays <= 0) {
+        setApprovalMessage("Please send to provider for review.");
+      } else if (timeFrameInDays <= 90) {
+        setApprovalMessage("Approve for 90 day supply.");
+      } else if (timeFrameInDays <= 180) {
+        setApprovalMessage("Approve a 90 day supply + 1 refill.");
+      } else if (timeFrameInDays <= 270) {
+        setApprovalMessage("Approve 90 day supply + 2 refills.");
+      } else {
+        setApprovalMessage("Approve 90 day supply + 3 refills.");
+      }
+    }
+  };
+
+  return (
+    <div>
+      <h2>Approval Time Frame Calculator</h2>
+      <div>
+        <OvCalc onDateSelected={(date) => setLastAppointmentDate(date)} />
+      </div>
+      <div>
+        <LabCalc onDateSelected={(date) => setLastLabDate(date)} />
+      </div>
+      <div>
+        <button onClick={calculateApprovalTimeFrame}>Calculate Approval Time Frame</button>
+      </div>
+      {approvalMessage && (
+        <div>
+          <label>Approval Message:</label>
+          <div>{approvalMessage}</div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default ApprovalTimeFrame;
+
+import React from 'react';
+
+function ApprovalTimeFrame({ ovDate, labDate }) {
+  const today = new Date();
+  const earliestDate = ovDate < labDate ? ovDate : labDate;
+  const daysBetween = Math.ceil((today - earliestDate) / (1000 * 60 * 60 * 24));
+
+  let message;
+  if (daysBetween <= 0) {
+    message = 'Please send to provider for review.';
+  } else if (daysBetween <= 90) {
+    message = 'Approve for 90 day supply.';
+  } else if (daysBetween <= 180) {
+    message = 'Approve a 90 day supply + 1 refill.';
+  } else if (daysBetween <= 270) {
+    message = 'Approve a 90 day supply + 2 refills.';
+  } else if (daysBetween <= 365) {
+    message = 'Approve a 90 day supply + 3 refills.';
+  }
+
+  return (
+    <div>
+      <h2>Approval Time Frame</h2>
+      <p>{message}</p>
+    </div>
+  );
+}
+
+export default ApprovalTimeFrame;
+let message;
+  if (daysTillNextOvDate <= 0) {
+    message = 'Please send to provider for review.';
+  } else if (daysTillNextOvDate <= 90) {
+    message = 'Approve for 90 day supply.';
+  } else if (daysTillNextOvDate <= 180) {
+    message = 'Approve a 90 day supply + 1 refill.';
+  } else if (daysTillNextOvDate <= 270) {
+    message = 'Approve a 90 day supply + 2 refills.';
+  } else if (daysTillNextOvDate <= 365) {
+    message = 'Approve a 90 day supply + 3 refills.';
+  }
+  
+  
+
+  return (
+    <div>
+      <h2>Approval Time Frame</h2>
+      <p>{message}</p>
+    </div>
+  );
+}
+
+export default ApprovalTimeFrame;
