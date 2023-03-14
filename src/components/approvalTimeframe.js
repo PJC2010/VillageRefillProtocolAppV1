@@ -18,7 +18,7 @@ const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
   if (numOfDays === null) {
     message = "";
   } else if(numOfDays <= 0) {
-    message ="Please send to provider for review."
+    message =<p style={{backgroundColor:'#eb4034'}}>Provide a 30 day supply courtesy refill, if one already provided, send to provider.</p>
   }
   else if (numOfDays <= 90) {
     message = "Approve for 90 day supply.";
@@ -27,7 +27,7 @@ const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
   } else if (numOfDays <= 270) {
     message = "Approve 90 day supply + 2 refills.";
   } else if (numOfDays <= 365) {
-    message = "Approve 90 day supply + 3 refills.";
+    message = "Approve a 90 day supply + 3 refills";
   }
   console.log(daysTillNextOVDate, daysTillNextLabDate)
 
