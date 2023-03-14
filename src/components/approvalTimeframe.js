@@ -1,4 +1,4 @@
-import { color } from "@mui/system";
+
 
 const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
   
@@ -18,7 +18,7 @@ const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
   if (numOfDays === null) {
     message = "";
   } else if(numOfDays <= 0) {
-    message =<p style={{backgroundColor:'#eb4034'}}>Provide a 30 day supply courtesy refill, if one already provided, send to provider.</p>
+    message =<p style={{backgroundColor:'#eb4034'}}>Provide a 30 day supply courtesy refill, if one already provided, send to provider for review.</p>
   }
   else if (numOfDays <= 90) {
     message = "Approve for 90 day supply.";

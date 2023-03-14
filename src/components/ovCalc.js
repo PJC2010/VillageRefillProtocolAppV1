@@ -45,6 +45,7 @@ const OvCalc = ({ ovIntervalDays, calculateNumofDaysTillNextOv }) => {
           selected={lastAppointmentDate}
           onChange={(date) => setLastAppointmentDate(date)}
           dateFormat="MM/dd/yyyy"
+          todayButton="Today"
         />
       </div>
       <div>

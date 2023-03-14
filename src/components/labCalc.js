@@ -30,6 +30,7 @@ const LabCalc = ({ labIntervalDays, calculateNumofDaysTillNextLab }) => {
           selected={lastLabDate}
           onChange={(date) => setLastLabDate(date)}
           dateFormat="MM/dd/yyyy"
+          todayButton="Today"
         />
       </div>
       <div>

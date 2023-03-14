@@ -1,63 +1,28 @@
-import { addDays } from 'date-fns';
 import React, {useState, useEffect } from 'react';
 import drugs from '../data/meddata.json'
-
-import differenceInDays from 'date-fns/differenceInDays';
-import ApprovalTimeFrame from './approvalTimeframe';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container'
-import { CssBaseline, OutlinedInput } from '@mui/material';
-
+import { CssBaseline } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import './styles.css';
-
-
 import MedicationDetails from './medicationDetails';
 
 
 
-
-
-
-
-
-
-function MedSearch({setShowOvCalc}) {
+function MedSearch() {
     
     const [search, setSearch] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     //const [filteredMedData, setFilteredMedData] = useState([]);
     //const [selectedMedName, setSelectedMedName] = useState(""); 
     const [options, setOptions] = useState([]);
-    
-    
-    const [showMedSearch, setShowMedSearch] = useState(false);
-    
     const [selectedMed, setSelectedMed] = useState(null);
     const [medList, setMedList] = useState([]);
     const [med, setMed] = useState(null);
     const [showDetails, setShowDetails] = useState(false);
     
-   
-    
-    
-    
-    
-    
-    
-    
-
-    const handleRequestInfoSubmit = selectedDate => {
-        const daysSinceSelectedDate = differenceInDays(new Date(), selectedDate);
-        if (daysSinceSelectedDate > 21) {
-          setShowMedSearch(true);
-        } else {
-          setShowMedSearch(false);
-        }
-      };
-
-      
+     
 
     useEffect(() => {
         const uniqueNames = [...new Set(drugs.map((med, ID) => med.drugFullName.ID))];

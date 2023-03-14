@@ -52,6 +52,8 @@ const MedicationDetails = ({medication}) => {
             {medication && medication.adherenceDrug && <p>Adherence Drug? {medication.adherenceDrug}</p>}
             {medication && medication.labRequired && <p>Labs Required: {medication.labsRequired}</p>}
             {medication && medication.labsRequiringEscalation &&<p>Labs needing escalation: <div style={{backgroundColor: '#ff0d0d' , color: '#fbff0d'}}>{medication.labsRequiringEscalation}</div></p>}
+            {medication && medication.vitalsRequired && <p>Vitals Required: {medication.vitalsRequired}</p>}
+            {medication && medication.vitalsRequiringEscalation && <p>Vitals Requiring Escalation: {medication.vitalsRequiringEscalation}</p>}
             {medication && medication.quantityLimitMessage &&<p>Quantity Limit message: <div style={{backgroundColor: '#ff0d0d' , color: '#fbff0d'}}>{medication.quantityLimitMessage}</div></p>}
             
             <Divider />

@@ -25,7 +25,7 @@ function App() {
       </head>
       <Container maxWidth="lg">
         <div className='header'>
-          <h1>VillageMD Refill App</h1>
+          <h1>VillageMD Refill App V1</h1>
           <img className='logo' src={logo}></img>
         </div>
         
