@@ -147,7 +147,7 @@ function MedSearch({setShowOvCalc}) {
         
         </Box>
         </Container>
-        {showDetails && (
+        {showDetails && selectedMed && (
           <MedicationDetails medication={selectedMed} />
         )}
         {/* <Autocomplete
