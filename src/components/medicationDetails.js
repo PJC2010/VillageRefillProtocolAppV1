@@ -4,7 +4,8 @@ import LabCalc from "./labCalc";
 import ApprovalTimeFrame from "./approvalTimeframe";
 import differenceInDays from 'date-fns/differenceInDays';
 import Container from '@mui/material/Container';
-
+import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider';
 
 
@@ -43,8 +44,10 @@ const MedicationDetails = ({medication}) => {
     
 
     return (
-        <Container>
+        <Container className='form-container'>
         <div>
+          <Box sx={{backgroundColor: '#f2f6fc' }}>
+          <Paper variant="outlined" square elevations={8}>
           
             {medication && medication.drugFullName && <h2>{medication.drugFullName}</h2>}
             {medication && medication.drugClassName &&<p>Drug Subclass: {medication.drugClassName}</p>}
@@ -57,11 +60,13 @@ const MedicationDetails = ({medication}) => {
             {medication && medication.quantityLimitMessage &&<p>Quantity Limit message: <div style={{backgroundColor: '#ff0d0d' , color: '#fbff0d'}}>{medication.quantityLimitMessage}</div></p>}
             
             <Divider />
+            </Paper>
             
             {medication.ovIntervalDays  && <OvCalc    ovIntervalDays={medication.ovIntervalDays} calculateNumofDaysTillNextOv={calculateNumofDaysTillNextOv} />} 
             <Divider />
             {medication.labIntervalDays !== "N/A"  && (<LabCalc labIntervalDays={medication.labIntervalDays} calculateNumofDaysTillNextLab={calculateNumofDaysTillNextLab} />)}
             <Divider />
+            </Box>
            <ApprovalTimeFrame daysTillNextOVDate={daysTillNextOVDate} daysTillNextLabDate={daysTillNextLabDate} /> 
             
             

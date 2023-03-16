@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import './styles.css';
 import MedicationDetails from './medicationDetails';
+import '../App.css'
 
 
 
@@ -59,10 +60,10 @@ function MedSearch() {
     
     return(
 
-        <div>
+        <div className='med-search-container'>
             
         <CssBaseline />
-        <Container maxWidth="lg">
+        <Container className='form-container' maxWidth="lg" sx={{p: 2}}>
         
                
         {/* <label>Search for medication: <MedicationOutlinedIcon /></label>
@@ -79,11 +80,12 @@ function MedSearch() {
          </datalist>  */}
         
           
-        <Container>
-          <Box>
+        
+          
             
         <Autocomplete 
         style={{ backgroundColor: 'white'}}
+        freeSolo
         fullWidth={true}
         sx={{m: 1}}
         id="med-search"
@@ -107,11 +109,11 @@ function MedSearch() {
         />
         
         {selectedMed && (
-          <button onClick={() => setShowDetails(true) }>Next</button>
+          <button  type="submit" onClick={() => setShowDetails(true) }>Next</button>
         )}
         
-        </Box>
-        </Container>
+        
+        
         {showDetails && selectedMed && (
           <MedicationDetails medication={selectedMed} />
         )}

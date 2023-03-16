@@ -20,9 +20,8 @@ function App() {
 
   return (
     <div className="App">
-      <head>
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
-      </head>
+      
+      
       <Container maxWidth="lg">
         <div className='header'>
           <h1>VillageMD Refill App V1</h1>
@@ -47,9 +46,10 @@ function App() {
       
       
       </Box>
+      </Container>
       <div className='footer'><span>2023 Pete Castillo</span></div>
       
-      </Container>
+      
     </div>
   );
 }

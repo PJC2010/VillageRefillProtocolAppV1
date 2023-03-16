@@ -40,23 +40,28 @@ function RequestInfo({ setShowMedSearch }) {
     return (
         <React.Fragment>
         <CssBaseline />
-        <Container maxWidth="lg" >
+        <Container maxWidth="sm" className='form-container' >
+          <h2 className='form-title'>Last Fill Date Info</h2>
 
-      <form style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '25vh' }} onSubmit={handleSubmit}>
+      <form  onSubmit={handleSubmit} className='last-fill-date-form'>
         <label>
           Enter the last fill date of medication requested:
+          </label>
+          <div className='form-group'>
           <DatePicker
-            className=''
+            className='custom-datepicker'
             selected={selectedDate}
             onChange={date => setSelectedDate(date)}
             todayButton="Today"
             required
           />
-        </label>
-        <label>
-          Please enter the last days supply of medication requested:
-        <input id='daysupply' type="number" min="0" max="100" value={daysSupply} onChange={handleDaySupplyChange} required />
-        </label>
+        
+        </div>
+        <div className='form-group'>
+      <label htmlFor='day-suppy'> Enter last filled day supply of medication requested: </label>
+        <input id='daySupply' type="number" min="0" max="100" value={daysSupply} onChange={handleDaySupplyChange} required />
+        </div>
+        
         <button type="submit">Submit</button>
         
       </form>
