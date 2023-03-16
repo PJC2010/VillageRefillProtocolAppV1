@@ -47,7 +47,7 @@ function App() {
       
       </Box>
       </Container>
-      <div className='footer'><span>2023 Pete Castillo</span></div>
+      
       
       
     </div>

@@ -44,30 +44,31 @@ const MedicationDetails = ({medication}) => {
     
 
     return (
-        <Container className='form-container'>
+        <Container className='form-container' sx={{paddingTop: 2}}>
         <div>
           <Box sx={{backgroundColor: '#f2f6fc' }}>
-          <Paper variant="outlined" square elevations={8}>
+          
           
             {medication && medication.drugFullName && <h2>{medication.drugFullName}</h2>}
             {medication && medication.drugClassName &&<p>Drug Subclass: {medication.drugClassName}</p>}
             {medication && medication.drugGroupName && <p>Drug Group: {medication.drugGroupName}</p>}
             {medication && medication.adherenceDrug && <p>Adherence Drug? {medication.adherenceDrug}</p>}
             {medication && medication.labRequired && <p>Labs Required: {medication.labsRequired}</p>}
-            {medication && medication.labsRequiringEscalation &&<p>Labs needing escalation: <div style={{backgroundColor: '#ff0d0d' , color: '#fbff0d'}}>{medication.labsRequiringEscalation}</div></p>}
+            {medication && medication.labsRequiringEscalation &&<p>Labs needing escalation: <div style={{backgroundColor: '#ff0d0d' , color: '#fbff0d', width: 'fit-content'}}>{medication.labsRequiringEscalation}</div></p>}
             {medication && medication.vitalsRequired && <p>Vitals Required: {medication.vitalsRequired}</p>}
             {medication && medication.vitalsRequiringEscalation && <p>Vitals Requiring Escalation: {medication.vitalsRequiringEscalation}</p>}
-            {medication && medication.quantityLimitMessage &&<p>Quantity Limit message: <div style={{backgroundColor: '#ff0d0d' , color: '#fbff0d'}}>{medication.quantityLimitMessage}</div></p>}
+            {medication && medication.quantityLimitMessage &&<p>Quantity Limit message: <div style={{backgroundColor: '#ff0d0d' , color: '#fbff0d', width: 'fit-content'}}>{medication.quantityLimitMessage}</div></p>}
             
             <Divider />
-            </Paper>
+            
             
             {medication.ovIntervalDays  && <OvCalc    ovIntervalDays={medication.ovIntervalDays} calculateNumofDaysTillNextOv={calculateNumofDaysTillNextOv} />} 
             <Divider />
             {medication.labIntervalDays !== "N/A"  && (<LabCalc labIntervalDays={medication.labIntervalDays} calculateNumofDaysTillNextLab={calculateNumofDaysTillNextLab} />)}
             <Divider />
+            <ApprovalTimeFrame daysTillNextOVDate={daysTillNextOVDate} daysTillNextLabDate={daysTillNextLabDate} /> 
             </Box>
-           <ApprovalTimeFrame daysTillNextOVDate={daysTillNextOVDate} daysTillNextLabDate={daysTillNextLabDate} /> 
+           
             
             
             

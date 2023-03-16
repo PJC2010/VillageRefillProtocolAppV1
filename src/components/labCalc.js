@@ -23,7 +23,7 @@ const LabCalc = ({ labIntervalDays, calculateNumofDaysTillNextLab }) => {
 
   return (
     <div>
-      <h2>Next Lab Date Calculator</h2>
+      <h2>2. Next Lab Date Calculator</h2>
       <div>
         <label>Last Lab Date:</label>
         <DatePicker
