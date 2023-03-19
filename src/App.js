@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import MedSearch from './components/MedSearch';
+import MedSearch from './components/medSearch';
 import RequestInfo from './components/requestInfo';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
