@@ -1,9 +1,10 @@
 /* #73A580 vmd orange #04bcdd vmd blue #c8dc53 vmd yellow #c8dc53 vmd green */
 
-body {
-  font-family: 'Playfair Display'
-
+* {
+  font-family: 'Rubik', sans-serif;
 }
+
+
 
 .header {
     display: flex;
