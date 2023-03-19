@@ -1,6 +1,5 @@
 import React, {useState, useEffect } from 'react';
 import drugs from '../data/meddata.json'
-import Box from '@mui/material/Box';
 import Container from '@mui/material/Container'
 import { CssBaseline } from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -14,9 +13,7 @@ import '../App.css'
 function MedSearch() {
     
     const [search, setSearch] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
-    //const [filteredMedData, setFilteredMedData] = useState([]);
-    //const [selectedMedName, setSelectedMedName] = useState(""); 
+    const [searchResults, setSearchResults] = useState([]); 
     const [options, setOptions] = useState([]);
     const [selectedMed, setSelectedMed] = useState(null);
     const [medList, setMedList] = useState([]);
@@ -37,10 +34,6 @@ function MedSearch() {
         
       };
       
-
-      /* const handleDropdownChange = e => {
-        setSelectedMedName(e.target.value);
-      }  */
 
       useEffect(() => {
         const filteredData = drugs.filter((med) => med.drugFullName.toLowerCase().includes(search.toLowerCase()))
@@ -66,23 +59,7 @@ function MedSearch() {
         <Container className='form-container' maxWidth="lg" sx={{p: 2}}>
         
                
-        {/* <label>Search for medication: <MedicationOutlinedIcon /></label>
-        <input
-      
-        type="text"
-        value={search}
-        onChange={handleSearchChange} 
-        list="options" />
-        <datalist id="options">
-        {options.map((med) => (
-          <option key={med.ID} value={med} />
-        ))}
-         </datalist>  */}
-        
-          
-        
-          
-            
+       
         <Autocomplete 
         style={{ backgroundColor: 'white'}}
         freeSolo
