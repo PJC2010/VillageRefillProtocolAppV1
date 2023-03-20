@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/VillageRefillProtocolAppV1/static/css/main.18837226.css",
-    "main.js": "/VillageRefillProtocolAppV1/static/js/main.99329cae.js",
+    "main.css": "/VillageRefillProtocolAppV1/static/css/main.693d5da0.css",
+    "main.js": "/VillageRefillProtocolAppV1/static/js/main.a49a3501.js",
     "index.html": "/VillageRefillProtocolAppV1/index.html",
-    "main.18837226.css.map": "/VillageRefillProtocolAppV1/static/css/main.18837226.css.map",
-    "main.99329cae.js.map": "/VillageRefillProtocolAppV1/static/js/main.99329cae.js.map"
+    "main.693d5da0.css.map": "/VillageRefillProtocolAppV1/static/css/main.693d5da0.css.map",
+    "main.a49a3501.js.map": "/VillageRefillProtocolAppV1/static/js/main.a49a3501.js.map"
   },
   "entrypoints": [
-    "static/css/main.18837226.css",
-    "static/js/main.99329cae.js"
+    "static/css/main.693d5da0.css",
+    "static/js/main.a49a3501.js"
   ]
 }
