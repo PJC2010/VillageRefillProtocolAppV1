@@ -11,6 +11,13 @@ import Divider from '@mui/material/Divider';
 
 
 const MedicationDetails = ({medication}) => {
+
+  const highlightStyle = {
+    backgroundColor: '#ff0d0d',
+    fontWeight: 'bold',
+    color: '#fbff0d'
+
+  }
     const [daysTillNextOVDate, setDaysTillNextOvDate] = useState(null);
     const [daysTillNextLabDate, setDaysTillNextLabDate] = useState(null);
     const calculateNumofDaysTillNextOv = (nextAppointmentDate) => {
@@ -26,6 +33,8 @@ const MedicationDetails = ({medication}) => {
         console.log(daysUntilNextLabDate);
         setDaysTillNextLabDate(daysUntilNextLabDate)
         return daysUntilNextLabDate;
+
+        
       };
       
     
@@ -50,14 +59,18 @@ const MedicationDetails = ({medication}) => {
           
           
             {medication && medication.drugFullName && <h2>{medication.drugFullName}</h2>}
+            {medication && medication.drugClassName &&<p>Brand Name: {medication.brandName}</p>}
             {medication && medication.drugClassName &&<p>Drug Subclass: {medication.drugClassName}</p>}
+            
+
+      
             {medication && medication.drugGroupName && <p>Drug Group: {medication.drugGroupName}</p>}
             {medication && medication.adherenceDrug && <p>Adherence Drug? {medication.adherenceDrug}</p>}
-            {medication && medication.labRequired && <p>Labs Required: {medication.labsRequired}</p>}
-            {medication && medication.labsRequiringEscalation &&<p>Labs needing escalation: <div style={{backgroundColor: '#ff0d0d' , color: '#fbff0d', width: 'fit-content'}}>{medication.labsRequiringEscalation}</div></p>}
-            {medication && medication.vitalsRequired && <p>Vitals Required: {medication.vitalsRequired}</p>}
-            {medication && medication.vitalsRequiringEscalation && <p>Vitals Requiring Escalation: {medication.vitalsRequiringEscalation}</p>}
-            {medication && medication.quantityLimitMessage &&<p>Quantity Limit message: <div style={{backgroundColor: '#ff0d0d' , color: '#fbff0d', width: 'fit-content'}}>{medication.quantityLimitMessage}</div></p>}
+            <p>Labs Required: {medication.labsRequired === 'N/A' ? medication.labsRequired : <span style={highlightStyle}>{medication.labsRequired}</span>}</p>
+            <p>Labs Requiring Escalation: {medication.labsRequiringEscalation === 'N/A' ? medication.labsRequiringEscalation : <span style={highlightStyle}>{medication.labsRequiringEscalation}</span>}</p>
+            <p>Vitals Required: {medication.vitalsRequired === 'N/A' ? medication.vitalsRequired : <span style={highlightStyle}>{medication.vitalsRequired}</span>}</p>
+            <p>Vitals Requiring Escalation: {medication.vitalsRequiringEscalation === 'N/A' ? medication.vitalsRequiringEscalation : <span style={highlightStyle}>{medication.vitalsRequiringEscalation}</span>}</p>
+            <p>Quantity Limit Message: {medication.quantityLimitMessage === 'N/A' ? medication.quantityLimitMessage : <span style={highlightStyle}>{medication.quantityLimitMessage}</span>}</p>
             
             <Divider />
             
