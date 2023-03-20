@@ -8,6 +8,8 @@ import './styles.css';
 import MedicationDetails from './medicationDetails';
 import '../App.css'
 
+//Add brand name search function 
+
 
 
 function MedSearch() {
@@ -35,13 +37,23 @@ function MedSearch() {
       };
       
 
-      useEffect(() => {
+      /* useEffect(() => {
         const filteredData = drugs.filter((med) => med.drugFullName.toLowerCase().includes(search.toLowerCase()))
+        
         setSearchResults(filteredData.slice(0,1))
         console.log(handleSearchChange)
         
       }, [search]); 
-      console.log(medList[0])
+      console.log(medList[0]) */
+
+      useEffect(() => {
+        const filteredData = drugs.filter((med) => {
+          const fullNameMatch = med.drugFullName.toLowerCase().includes(search.toLowerCase())
+          const brandNameMatch = med.brandName && med.brandName.toLowerCase().includes(search.toLowerCase)
+          return fullNameMatch || brandNameMatch;
+        });
+        setSearchResults(filteredData.slice(0, 1))
+      }, [search])
       
 
       
@@ -68,7 +80,7 @@ function MedSearch() {
         id="med-search"
         color='secondary'
         options={drugs}
-        getOptionLabel={(option) => option.drugFullName}
+        getOptionLabel={(option) => `${option.drugFullName}/${option.brandName}`}
         renderInput={(params) => (
           <TextField 
           {...params}
