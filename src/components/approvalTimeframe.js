@@ -29,7 +29,7 @@ const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
   } else if (numOfDays <= 365) {
     message = "90 day supply + 3 refills";
   }
-  console.log(daysTillNextOVDate, daysTillNextLabDate)
+  // console.log(daysTillNextOVDate, daysTillNextLabDate)
 
   return (
     <div>

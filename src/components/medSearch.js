@@ -31,7 +31,7 @@ function MedSearch() {
 
     const handleSearchChange = e => {
         setSearch(e.target.value);
-        console.log(e)
+        // console.log(e)
         
         
       };

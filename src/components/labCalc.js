@@ -11,11 +11,11 @@ const LabCalc = ({ labIntervalDays, calculateNumofDaysTillNextLab }) => {
   const calculateNextLabDate = () => {
     const today = new Date();
     const daysUntilNextLabDate = differenceInDays(nextLabDate, today)
-    console.log(daysUntilNextLabDate)
+    // console.log(daysUntilNextLabDate)
     const newDate = new Date(lastLabDate);
     const nextLabsDate = new Date(newDate.getTime() + labIntervalDays * 24 * 60 * 60 * 1000);
     setNextLabDate(nextLabsDate);
-    console.log(nextLabsDate)
+     //console.log(nextLabsDate)
     calculateNumofDaysTillNextLab(nextLabsDate);
     
     

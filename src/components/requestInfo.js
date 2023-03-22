@@ -21,11 +21,11 @@ function RequestInfo({ setShowMedSearch }) {
     const handleSubmit = e => {
       e.preventDefault();
       const daysToAdd = parseInt(daysSupply)
-      console.log(daysToAdd)
+      // console.log(daysToAdd)
       const daysSupplyToAdd = addDays(selectedDate, daysToAdd )
-      console.log(daysSupplyToAdd)
+      // console.log(daysSupplyToAdd)
       const daysSinceSelectedDate = differenceInDays(daysSupplyToAdd, new Date() );
-      console.log(daysSinceSelectedDate)
+      // console.log(daysSinceSelectedDate)
       if (daysSinceSelectedDate < 21) {
         setShowMedSearch(true);
       } else {

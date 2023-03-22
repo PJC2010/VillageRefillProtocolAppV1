@@ -19,7 +19,7 @@ const OvCalc = ({ ovIntervalDays, calculateNumofDaysTillNextOv }) => {
     const newDate = new Date(lastAppointmentDate);
     const nextOvDate = new Date(newDate.getTime() + ovIntervalDays * 24 * 60 * 60 * 1000);
     setNextAppointmentDate(nextOvDate);
-    console.log(nextOvDate)
+    // console.log(nextOvDate)
     const daysTillNextOVDate = calculateNumofDaysTillNextOv(nextOvDate);
     
     

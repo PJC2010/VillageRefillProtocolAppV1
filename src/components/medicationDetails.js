@@ -23,14 +23,14 @@ const MedicationDetails = ({medication}) => {
     const calculateNumofDaysTillNextOv = (nextAppointmentDate) => {
         const today = new Date();
         const daysUntilNextOVDate = differenceInDays(nextAppointmentDate, today);
-        console.log(daysUntilNextOVDate);
+        // console.log(daysUntilNextOVDate);
         setDaysTillNextOvDate(daysUntilNextOVDate)
         return daysUntilNextOVDate;
       };
       const calculateNumofDaysTillNextLab = (nextLabDate) => {
         const today = new Date();
         const daysUntilNextLabDate = differenceInDays(nextLabDate, today);
-        console.log(daysUntilNextLabDate);
+         //console.log(daysUntilNextLabDate);
         setDaysTillNextLabDate(daysUntilNextLabDate)
         return daysUntilNextLabDate;
 
