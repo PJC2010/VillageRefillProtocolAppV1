@@ -4,6 +4,12 @@
   font-family: 'Rubik', sans-serif;
 }
 
+.two-buttons {
+  display: flex;
+  justify-content: space-between;
+
+}
+
 
 
 .header {

@@ -1,6 +1,9 @@
 //Add another section 4. If does not meet protocol, send to provider for review. Change title to protocol next steps 
 
+
 const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
+
+  
   
 
   
@@ -32,10 +35,11 @@ const ApprovalTimeFrame = ({ daysTillNextOVDate, daysTillNextLabDate }) => {
   // console.log(daysTillNextOVDate, daysTillNextLabDate)
 
   return (
-    <div>
+    <div >
       <h2>3. Protocol next steps:</h2>
       <p>If protocol met, may approve up to:</p>
       <h1 style={{backgroundColor: 'green', color:'#ffffff'}}>{message}</h1>
+      
     </div>
   );
 }; export default ApprovalTimeFrame

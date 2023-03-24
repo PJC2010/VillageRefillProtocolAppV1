@@ -21,6 +21,10 @@ function MedSearch() {
     const [medList, setMedList] = useState([]);
     const [med, setMed] = useState(null);
     const [showDetails, setShowDetails] = useState(false);
+
+    const handleNewRequest = () => {
+      window.location.reload();
+    }
     
      
 
@@ -66,6 +70,7 @@ function MedSearch() {
     return(
 
         <div className='med-search-container'>
+
             
         <CssBaseline />
         <Container className='form-container' maxWidth="lg" sx={{p: 2}}>
@@ -96,10 +101,14 @@ function MedSearch() {
         }}
         
         />
+        <div className='two-buttons'>
+        
         
         {selectedMed && (
           <button  type="submit" onClick={() => setShowDetails(true) }>Next</button>
         )}
+        {selectedMed && (<button  type='submit'onClick={handleNewRequest}>New Request</button>)}
+        </div>
         
         
         
